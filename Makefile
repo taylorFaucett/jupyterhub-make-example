@@ -7,7 +7,7 @@ DEPS := $(VENV)/.deps
 PYTHON := $(VENV)/bin/python
 PYTHON_CMD := PYTHONPATH=$(CURDIR) $(PYTHON)
 
-.PHONY: test help
+.PHONY: help
 
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
@@ -46,21 +46,8 @@ clean:
 
 update: $(DEPS)
 
-test: $(DEPS)  ## Run tests
-	$(PYTHON_CMD) -m pytest
-
-watch: $(DEPS) ## Run unit tests continuously
-	$(PYTHON_CMD) -mpytest_watch
-
 repl: ## Run an iPython REPL
 	$(VENV)/bin/ipython
 
 run: $(DEPS) ## Run the program on the provided dataset
 	./main
-    
-jupyter: $(DEPS) ## Run a jupyter notebook
-	$(VENV)/bin/jupyter notebook
-
-patch: ## Generate a patch file to submit for your solution
-	git add .
-	git diff --binary origin/master > patch_test.patch
