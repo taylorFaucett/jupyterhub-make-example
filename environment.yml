@@ -1,0 +1,13 @@
+---
+name: energyflow
+
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - ipython=7.15.0
+  - pip
+  - tensorflow
+  - matplotlib
+  - pip:
+      - energyflow
