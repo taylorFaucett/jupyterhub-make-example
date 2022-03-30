@@ -6,13 +6,7 @@ For a quick and easy way to setup a python environment with GPU access on Jupyte
 git clone https://github.com/taylorFaucett/jupyterhub-make-example EFN
 ```
 
-This will download everything in this repo into a directory called EFN. You will need to set permissions for the main file. This can be done by issuing the command
-
-```
-chmod +x main
-```
-
-Python packages are managed by `environment.yml`. If you issue the command `make run` or `make update`, a conda environment will be created with the conda/pip packages placed in environment.yml. 
+This will download everything in this repo into a directory called EFN. Python packages are managed by `environment.yml`. If you issue the command `make run` or `make update`, a conda environment will be created with the conda/pip packages placed in environment.yml. Any additional packages added to `environment.yml` will be installed into your conda environment whenever you issue `make run` or `make update` in the future.
 
 To run the EFN example in "efn_example.py", simply execute the command `make run`. A simple EFN from the `energyflow` package is used as a test for the GPU. This code is taken from: [https://energyflow.network/examples/](https://energyflow.network/examples/)
 
