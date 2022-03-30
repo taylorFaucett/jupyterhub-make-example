@@ -1,12 +1,12 @@
 # Stand Alone Environment on JupyterHub with GPU Access
 
-For a quick and easy way to setup a python environment with GPU access on JupyterHub, clone this repository
+For a quick and easy way to setup a python environment with GPU access on JupyterHub, clone this repository using
 
 ```
-git clone https://github.com/taylorFaucett/jupyterhub-make-example
+git clone https://github.com/taylorFaucett/jupyterhub-make-example EFN
 ```
 
-You will need to set permissions for the main file. This can be done by issuing the command
+This will download everything in this repo into a directory called EFN. You will need to set permissions for the main file. This can be done by issuing the command
 
 ```
 chmod +x main
