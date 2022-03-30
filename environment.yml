@@ -9,5 +9,6 @@ dependencies:
   - pip
   - tensorflow
   - matplotlib
+  - scikit-learn
   - pip:
       - energyflow
