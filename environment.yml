@@ -5,7 +5,7 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - ipython=7.15.0
+  - ipython
   - pip
   - tensorflow
   - matplotlib
