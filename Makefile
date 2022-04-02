@@ -9,13 +9,7 @@ PYTHON_CMD := PYTHONPATH=$(CURDIR) $(PYTHON)
 
 .PHONY: help
 
-UNAME_S := $(shell uname -s)
-ifeq ($(UNAME_S),Linux)
-	MINICONDA_URL := https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-endif
-ifeq ($(UNAME_S),Darwin)
-	MINICONDA_URL := https://github.com/conda-forge/miniforge/releases/download/4.12.0-0/Miniforge3-MacOSX-arm64.sh
-endif
+MINICONDA_URL := https://github.com/conda-forge/miniforge/releases/download/4.12.0-0/Miniforge3-MacOSX-arm64.sh
 
 ifndef VERBOSE
 .SILENT:
@@ -27,9 +21,9 @@ help:
 FORCE:
 
 $(CONDA):
-	# conda activate /Users/tfaucett/Downloads/cforge-test/.venv
-	chmod +x $(CURDIR)/miniconda.sh
-	sh $(CURDIR)/miniconda.sh -u -b -p "$(CURDIR)/.miniconda3"
+	echo "Installing Miniconda3 to $(MINICONDA)"
+	chmod +x $(CURDIR)/Miniforge3-MacOSX-arm64.sh
+	bash $(CURDIR)/Miniforge3-MacOSX-arm64.sh -u -b -p "$(CURDIR)/.miniconda3"
 
 $(PYTHON): | $(CONDA)
 	$(CONDA) env create -p $(VENV) -f environment.yml
@@ -43,13 +37,13 @@ clean:
 	rm -rf $(MINICONDA)
 	find . -name __pycache__ | xargs rm -rf
 
-update: $(DEPS)
-
 repl: ## Run an iPython REPL
 	$(VENV)/bin/ipython
 	
 jupyter: $(DEPS)
 	$(VENV)/bin/jupyter-lab
 
-run: $(DEPS) ## Run the program on the provided dataset
+run: $(DEPS)
 	./main
+
+setup: $(DEPS)
