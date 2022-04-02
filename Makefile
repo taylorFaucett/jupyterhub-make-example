@@ -14,7 +14,7 @@ ifeq ($(UNAME_S),Linux)
 	MINICONDA_URL := https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 endif
 ifeq ($(UNAME_S),Darwin)
-	MINICONDA_URL := https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
+	MINICONDA_URL := https://github.com/conda-forge/miniforge/releases/download/4.12.0-0/Miniforge3-MacOSX-arm64.sh
 endif
 
 ifndef VERBOSE
@@ -27,13 +27,12 @@ help:
 FORCE:
 
 $(CONDA):
-	echo "Installing Miniconda3 to $(MINICONDA)"
-	curl ${MINICONDA_URL} > $(CURDIR)/miniconda.sh
-	bash $(CURDIR)/miniconda.sh -u -b -p "$(CURDIR)/.miniconda3"
-	rm $(CURDIR)/miniconda.sh
+	# conda activate /Users/tfaucett/Downloads/cforge-test/.venv
+	chmod +x $(CURDIR)/miniconda.sh
+	sh $(CURDIR)/miniconda.sh -u -b -p "$(CURDIR)/.miniconda3"
 
 $(PYTHON): | $(CONDA)
-	$(CONDA) env create -p $(VENV)
+	$(CONDA) env create -p $(VENV) -f environment.yml
 
 $(DEPS): environment.yml $(PYTHON)
 	$(CONDA) env update --prune --quiet -p $(VENV) -f environment.yml
@@ -48,6 +47,9 @@ update: $(DEPS)
 
 repl: ## Run an iPython REPL
 	$(VENV)/bin/ipython
+	
+jupyter: $(DEPS)
+	$(VENV)/bin/jupyter-lab
 
 run: $(DEPS) ## Run the program on the provided dataset
 	./main

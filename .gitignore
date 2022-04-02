@@ -1,1 +1,6 @@
 .DS_Store
+.nova/
+.venv/
+.miniconda3/
+.ipynb_checkpoints/
+.miniconda.sh

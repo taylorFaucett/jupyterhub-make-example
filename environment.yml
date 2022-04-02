@@ -4,11 +4,33 @@ name: energyflow
 channels:
   - conda-forge
   - defaults
+  - apple
 dependencies:
-  - ipython
-  - pip
-  - tensorflow
-  - matplotlib
+  - python=3.8
+  # Core Scientific
+  - numpy
+  - pandas
   - scikit-learn
+  - scipy
+  - h5py
+  - pyarrow
+  # Plotting
+  - matplotlib
+  - seaborn
+  # Jupyter
+  - jupyterlab
+  - notebook
+  - ipython
+  - papermill
+  - nb_conda_kernels
+  # Misc
+  - tqdm
+  - black
+  - isort
+  # PIP
+  - pip
   - pip:
       - energyflow
+      - average-decision-ordering
+      - tensorflow-macos
+      - tensorflow-metal
