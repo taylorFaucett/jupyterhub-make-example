@@ -1,7 +1,7 @@
 SHELL := $(shell which bash)
 MINICONDA := $(CURDIR)/.miniconda3
 CONDA := $(MINICONDA)/bin/conda
-CONDA_VERSION := 4.7.10
+CONDA_VERSION := 4.12.0-0
 VENV := $(PWD)/.venv
 DEPS := $(VENV)/.deps
 PYTHON := $(VENV)/bin/python
@@ -37,7 +37,7 @@ clean:
 	rm -rf $(MINICONDA)
 	find . -name __pycache__ | xargs rm -rf
 
-repl: ## Run an iPython REPL
+repl:
 	$(VENV)/bin/ipython
 	
 jupyter: $(DEPS)
