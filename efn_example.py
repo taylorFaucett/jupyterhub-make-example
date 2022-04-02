@@ -20,6 +20,7 @@ from __future__ import absolute_import, division, print_function
 # energyflow imports
 import energyflow as ef
 import matplotlib.pyplot as plt
+
 # standard numerical library imports
 import numpy as np
 from energyflow.archs import EFN
